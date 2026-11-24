@@ -1,0 +1,240 @@
+# Reading pref.tcl
+# do arm_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -sv -work work +incdir+D:/single_cycle_ARM_processor/controller {D:/single_cycle_ARM_processor/controller/pc_logic.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 17:23:52 on Nov 22,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/single_cycle_ARM_processor/controller" D:/single_cycle_ARM_processor/controller/pc_logic.sv 
+# -- Compiling module pc_logic
+# 
+# Top level modules:
+# 	pc_logic
+# End time: 17:23:52 on Nov 22,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/single_cycle_ARM_processor/controller {D:/single_cycle_ARM_processor/controller/main_decoder.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 17:23:52 on Nov 22,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/single_cycle_ARM_processor/controller" D:/single_cycle_ARM_processor/controller/main_decoder.sv 
+# -- Compiling module main_decoder
+# 
+# Top level modules:
+# 	main_decoder
+# End time: 17:23:52 on Nov 22,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/single_cycle_ARM_processor/controller {D:/single_cycle_ARM_processor/controller/decoder.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 17:23:52 on Nov 22,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/single_cycle_ARM_processor/controller" D:/single_cycle_ARM_processor/controller/decoder.sv 
+# -- Compiling module decoder
+# 
+# Top level modules:
+# 	decoder
+# End time: 17:23:52 on Nov 22,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/single_cycle_ARM_processor/controller {D:/single_cycle_ARM_processor/controller/controller.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 17:23:52 on Nov 22,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/single_cycle_ARM_processor/controller" D:/single_cycle_ARM_processor/controller/controller.sv 
+# -- Compiling module controller
+# 
+# Top level modules:
+# 	controller
+# End time: 17:23:52 on Nov 22,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/single_cycle_ARM_processor/controller {D:/single_cycle_ARM_processor/controller/conditional_logic.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 17:23:52 on Nov 22,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/single_cycle_ARM_processor/controller" D:/single_cycle_ARM_processor/controller/conditional_logic.sv 
+# -- Compiling module conditional_logic
+# 
+# Top level modules:
+# 	conditional_logic
+# End time: 17:23:52 on Nov 22,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/single_cycle_ARM_processor/controller {D:/single_cycle_ARM_processor/controller/alu_decoder.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 17:23:52 on Nov 22,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/single_cycle_ARM_processor/controller" D:/single_cycle_ARM_processor/controller/alu_decoder.sv 
+# -- Compiling module alu_decoder
+# 
+# Top level modules:
+# 	alu_decoder
+# End time: 17:23:52 on Nov 22,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/single_cycle_ARM_processor/datapath {D:/single_cycle_ARM_processor/datapath/shifter.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 17:23:52 on Nov 22,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/single_cycle_ARM_processor/datapath" D:/single_cycle_ARM_processor/datapath/shifter.sv 
+# -- Compiling module shifter
+# 
+# Top level modules:
+# 	shifter
+# End time: 17:23:53 on Nov 22,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/single_cycle_ARM_processor/datapath {D:/single_cycle_ARM_processor/datapath/register_file.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 17:23:53 on Nov 22,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/single_cycle_ARM_processor/datapath" D:/single_cycle_ARM_processor/datapath/register_file.sv 
+# -- Compiling module register_file
+# 
+# Top level modules:
+# 	register_file
+# End time: 17:23:53 on Nov 22,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/single_cycle_ARM_processor/datapath {D:/single_cycle_ARM_processor/datapath/pc_unit.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 17:23:53 on Nov 22,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/single_cycle_ARM_processor/datapath" D:/single_cycle_ARM_processor/datapath/pc_unit.sv 
+# -- Compiling module pc_unit
+# 
+# Top level modules:
+# 	pc_unit
+# End time: 17:23:53 on Nov 22,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/single_cycle_ARM_processor/datapath {D:/single_cycle_ARM_processor/datapath/mux.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 17:23:53 on Nov 22,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/single_cycle_ARM_processor/datapath" D:/single_cycle_ARM_processor/datapath/mux.sv 
+# -- Compiling module mux
+# 
+# Top level modules:
+# 	mux
+# End time: 17:23:53 on Nov 22,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/single_cycle_ARM_processor/datapath {D:/single_cycle_ARM_processor/datapath/instruction_memory.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 17:23:53 on Nov 22,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/single_cycle_ARM_processor/datapath" D:/single_cycle_ARM_processor/datapath/instruction_memory.sv 
+# -- Compiling module instruction_memory
+# 
+# Top level modules:
+# 	instruction_memory
+# End time: 17:23:53 on Nov 22,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/single_cycle_ARM_processor/datapath {D:/single_cycle_ARM_processor/datapath/extend.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 17:23:53 on Nov 22,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/single_cycle_ARM_processor/datapath" D:/single_cycle_ARM_processor/datapath/extend.sv 
+# -- Compiling module extend
+# 
+# Top level modules:
+# 	extend
+# End time: 17:23:53 on Nov 22,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/single_cycle_ARM_processor/datapath {D:/single_cycle_ARM_processor/datapath/datapath.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 17:23:53 on Nov 22,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/single_cycle_ARM_processor/datapath" D:/single_cycle_ARM_processor/datapath/datapath.sv 
+# -- Compiling module datapath
+# 
+# Top level modules:
+# 	datapath
+# End time: 17:23:53 on Nov 22,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/single_cycle_ARM_processor/datapath {D:/single_cycle_ARM_processor/datapath/data_memory.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 17:23:53 on Nov 22,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/single_cycle_ARM_processor/datapath" D:/single_cycle_ARM_processor/datapath/data_memory.sv 
+# -- Compiling module data_memory
+# 
+# Top level modules:
+# 	data_memory
+# End time: 17:23:53 on Nov 22,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/single_cycle_ARM_processor/datapath {D:/single_cycle_ARM_processor/datapath/alu.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 17:23:53 on Nov 22,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/single_cycle_ARM_processor/datapath" D:/single_cycle_ARM_processor/datapath/alu.sv 
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	alu
+# End time: 17:23:54 on Nov 22,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/single_cycle_ARM_processor/arm {D:/single_cycle_ARM_processor/arm/arm.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 17:23:54 on Nov 22,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/single_cycle_ARM_processor/arm" D:/single_cycle_ARM_processor/arm/arm.sv 
+# -- Compiling module arm
+# 
+# Top level modules:
+# 	arm
+# End time: 17:23:54 on Nov 22,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -sv -work work +incdir+D:/single_cycle_ARM_processor/arm {D:/single_cycle_ARM_processor/arm/tb_arm.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 17:23:54 on Nov 22,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/single_cycle_ARM_processor/arm" D:/single_cycle_ARM_processor/arm/tb_arm.sv 
+# -- Compiling module tb_arm
+# 
+# Top level modules:
+# 	tb_arm
+# End time: 17:23:54 on Nov 22,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  tb_arm
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" tb_arm 
+# Start time: 17:23:54 on Nov 22,2026
+# Loading sv_std.std
+# Loading work.tb_arm
+# Loading work.arm
+# Loading work.datapath
+# Loading work.pc_unit
+# Loading work.instruction_memory
+# Loading work.mux
+# Loading work.register_file
+# Loading work.shifter
+# Loading work.extend
+# Loading work.alu
+# Loading work.data_memory
+# Loading work.controller
+# Loading work.decoder
+# Loading work.main_decoder
+# Loading work.alu_decoder
+# Loading work.pc_logic
+# Loading work.conditional_logic
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# 
+# ========================================
+#        START ARM PROCESSOR TEST
+# ========================================
+# 
+# ========== START EXECUTING ==========
+# [PASS] ADD R2, R1, R3 | R2 = 30 (0x0000001e)
+# [PASS] ADD R4, R1, #5 | R4 = 15 (0x0000000f)
+# [PASS] SUB R5, R3, R1 | R5 = 10 (0x0000000a)
+# [PASS] AND R6, R1, R3 | R6 = 0 (0x00000000)
+# [PASS] ORR R7, R1, R3 | R7 = 30 (0x0000001e)
+# [PASS] STR R2, [R0, #0] | RAM[0] = 30
+# [PASS] LDR R8, [R0, #0] | R8 = 30 (0x0000001e)
+# [PASS] CMP ALUFlags = 1000
+# [PASS] CMP stored NZCV = 1000
+# [PASS] CMP must not write R0 | R0 = 0 (0x00000000)
+# [PASS] PC before BRANCH = 32
+# [PASS] BRANCH: PC remains at 32
+# 
+# ========================================
+#        ALL ARM TESTS PASSED!
+# ========================================
+# ** Note: $finish    : D:/single_cycle_ARM_processor/arm/tb_arm.sv(378)
+#    Time: 106 ns  Iteration: 0  Instance: /tb_arm
+# 1
+# Break in Module tb_arm at D:/single_cycle_ARM_processor/arm/tb_arm.sv line 378
+# End time: 17:32:16 on Nov 22,2026, Elapsed time: 0:08:22
+# Errors: 0, Warnings: 0

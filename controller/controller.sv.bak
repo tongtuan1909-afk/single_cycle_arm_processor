@@ -1,0 +1,147 @@
+module controller(
+
+    // =====================================
+    // CAC NGO VAO
+    // =====================================
+
+    input logic clk,
+    input logic reset,
+
+    // Lenh 32 bit tu Instruction Memory
+    input logic [31:0] Instr,
+
+    // Cac co trang thai tu ALU
+    // ALUFlags = {N, Z, C, V}
+    input logic [3:0] ALUFlags,
+
+
+    // =====================================
+    // CAC NGO RA DATAPATH
+    // =====================================
+
+    // Dieu khien PC
+    output logic PCSrc,
+
+    // Dieu khien Register File
+    output logic [1:0] RegSrc,
+    output logic RegWrite,
+
+    // Dieu khien bo Extend
+    output logic [1:0] ImmSrc,
+
+    // Dieu khien MUX truoc ALU
+    output logic ALUSrc,
+
+    // Ma dieu khien ALU 3 bit
+    output logic [2:0] ALUControl,
+
+    // Dieu khien Data Memory
+    output logic MemWrite,
+    output logic MemtoReg,
+
+    // Cac co trang thai cu tu Conditional Logic
+    // Dua tro lai Datapath
+    output logic CarryIn,
+    output logic VFlagIn
+
+);
+
+
+    // =====================================
+    // CAC TIN HIEU NOI BO
+    // =====================================
+
+    // Tin hieu tu Main Decoder
+    logic RegW;
+    logic MemW;
+
+    // Tin hieu tu ALU Decoder
+    logic [1:0] FlagW;
+    logic NoWrite;
+
+    // Tin hieu tu PC Logic
+    logic PCS;
+
+    // Tin hieu cho phep ghi Register File
+    // sau khi xu ly NoWrite
+    logic RegW_Final;
+
+
+    // =====================================
+    // 1. DECODER
+    // =====================================
+
+    decoder Decoder(
+
+        // Lenh ARM
+        .Instr(Instr),
+
+        // Cac tin hieu dieu khien truc tiep
+        .MemtoReg(MemtoReg),
+        .MemW(MemW),
+        .ALUSrc(ALUSrc),
+        .ImmSrc(ImmSrc),
+        .RegW(RegW),
+        .RegSrc(RegSrc),
+
+        // Tin hieu dieu khien ALU
+        .ALUControl(ALUControl),
+        .FlagW(FlagW),
+
+        // Tin hieu PC Logic
+        .PCS(PCS),
+
+        // Tin hieu CMP
+        .NoWrite(NoWrite)
+
+    );
+
+
+    // =====================================
+    // 2. XU LY QUYEN GHI REGISTER FILE
+    // =====================================
+
+    // NoWrite = 1:
+    // Khong cho phep ghi ket qua vao Register File
+    // Vi du: lenh CMP
+
+    assign RegW_Final = RegW & ~NoWrite;
+
+
+    // =====================================
+    // 3. CONDITIONAL LOGIC
+    // =====================================
+
+    conditional_logic ConditionalLogic(
+
+        // Clock va reset
+        .clk(clk),
+        .reset(reset),
+
+        // Ma dieu kien cua lenh
+        .Cond(Instr[31:28]),
+
+        // Co trang thai tu ALU
+        .ALUFlags(ALUFlags),
+
+        // Tin hieu cap nhat Flags
+        .FlagW(FlagW),
+
+        // Cac tin hieu tu Decoder
+        .PCS(PCS),
+        .RegW(RegW_Final),
+        .MemW(MemW),
+
+        // Cac tin hieu dieu khien sau khi kiem tra dieu kien
+        .PCSrc(PCSrc),
+        .RegWrite(RegWrite),
+        .MemWrite(MemWrite),
+
+        // Dua co Carry va Overflow cu ve Datapath
+        .CarryIn(CarryIn),
+        .VFlagIn(VFlagIn)
+
+    );
+
+
+endmodule

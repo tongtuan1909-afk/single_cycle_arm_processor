@@ -1,0 +1,917 @@
+Analysis & Synthesis report for datapath
+Mon Nov 09 10:16:35 2026
+Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Parameter Settings for User Entity Instance: mux:MUX_RA1
+ 12. Parameter Settings for User Entity Instance: mux:MUX_RA2
+ 13. Parameter Settings for User Entity Instance: mux:MUX_ALU
+ 14. Parameter Settings for User Entity Instance: mux:MUX_WriteBack
+ 15. Port Connectivity Checks: "mux:MUX_RA1"
+ 16. Port Connectivity Checks: "pc_unit:PC_Unit"
+ 17. Post-Synthesis Netlist Statistics for Top Partition
+ 18. Elapsed Time Per Partition
+ 19. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Mon Nov 09 10:16:35 2026       ;
+; Quartus Prime Version           ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
+; Revision Name                   ; datapath                                    ;
+; Top-level Entity Name           ; datapath                                    ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 8256                                        ;
+; Total pins                      ; 148                                         ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CGXFC7C7F23C8     ;                    ;
+; Top-level entity name                                                           ; datapath           ; datapath           ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 8           ;
+;                            ;             ;
+; Average used               ; 1.01        ;
+; Maximum used               ; 8           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
+;     Processor 5            ;   0.1%      ;
+;     Processor 6            ;   0.1%      ;
+;     Processor 7            ;   0.1%      ;
+;     Processor 8            ;   0.1%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                     ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                 ; Library ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------+---------+
+; datapath/pc_unit.sv              ; yes             ; User SystemVerilog HDL File  ; D:/single_cycle_ARM_processor/datapath/pc_unit.sv            ;         ;
+; datapath/instruction_memory.sv   ; yes             ; User SystemVerilog HDL File  ; D:/single_cycle_ARM_processor/datapath/instruction_memory.sv ;         ;
+; datapath/register_file.sv        ; yes             ; User SystemVerilog HDL File  ; D:/single_cycle_ARM_processor/datapath/register_file.sv      ;         ;
+; datapath/extend.sv               ; yes             ; User SystemVerilog HDL File  ; D:/single_cycle_ARM_processor/datapath/extend.sv             ;         ;
+; datapath/alu.sv                  ; yes             ; User SystemVerilog HDL File  ; D:/single_cycle_ARM_processor/datapath/alu.sv                ;         ;
+; datapath/data_memory.sv          ; yes             ; User SystemVerilog HDL File  ; D:/single_cycle_ARM_processor/datapath/data_memory.sv        ;         ;
+; datapath/mux.sv                  ; yes             ; User SystemVerilog HDL File  ; D:/single_cycle_ARM_processor/datapath/mux.sv                ;         ;
+; datapath/shifter.sv              ; yes             ; User SystemVerilog HDL File  ; D:/single_cycle_ARM_processor/datapath/shifter.sv            ;         ;
+; datapath/datapath.sv             ; yes             ; User SystemVerilog HDL File  ; D:/single_cycle_ARM_processor/datapath/datapath.sv           ;         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 5622      ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 3311      ;
+;     -- 7 input functions                    ; 3         ;
+;     -- 6 input functions                    ; 2852      ;
+;     -- 5 input functions                    ; 1         ;
+;     -- 4 input functions                    ; 322       ;
+;     -- <=3 input functions                  ; 133       ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 8256      ;
+;                                             ;           ;
+; I/O pins                                    ; 148       ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 8256      ;
+; Total fan-out                               ; 43859     ;
+; Average fan-out                             ; 3.70      ;
++---------------------------------------------+-----------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                              ;
++----------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------+---------------+--------------+
+; Compilation Hierarchy Node       ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                   ; Entity Name   ; Library Name ;
++----------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------+---------------+--------------+
+; |datapath                        ; 3311 (0)            ; 8256 (0)                  ; 0                 ; 0          ; 148  ; 0            ; |datapath                             ; datapath      ; work         ;
+;    |alu:ALU|                     ; 145 (145)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|alu:ALU                     ; alu           ; work         ;
+;    |data_memory:Data_Memory|     ; 3038 (3038)         ; 8192 (8192)               ; 0                 ; 0          ; 0    ; 0            ; |datapath|data_memory:Data_Memory     ; data_memory   ; work         ;
+;    |mux:MUX_ALU|                 ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|mux:MUX_ALU                 ; mux           ; work         ;
+;    |mux:MUX_WriteBack|           ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |datapath|mux:MUX_WriteBack           ; mux           ; work         ;
+;    |pc_unit:PC_Unit|             ; 62 (62)             ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |datapath|pc_unit:PC_Unit             ; pc_unit       ; work         ;
+;    |register_file:Register_File| ; 2 (2)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |datapath|register_file:Register_File ; register_file ; work         ;
++----------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------+---------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                               ;
++-----------------------------------------+----------------------------------------+
+; Register name                           ; Reason for Removal                     ;
++-----------------------------------------+----------------------------------------+
+; register_file:Register_File|rf~32       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~64       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~96       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~128      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~160      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~192      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~224      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~256      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~288      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~320      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~352      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~384      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~416      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~448      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~63       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~95       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~127      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~159      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~191      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~223      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~255      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~287      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~319      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~351      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~383      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~415      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~447      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~479      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~62       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~94       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~126      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~158      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~190      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~222      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~254      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~286      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~318      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~350      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~382      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~414      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~446      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~478      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~61       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~93       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~125      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~157      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~189      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~221      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~253      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~285      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~317      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~349      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~381      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~413      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~445      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~477      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~60       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~92       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~124      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~156      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~188      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~220      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~252      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~284      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~316      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~348      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~380      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~412      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~444      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~476      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~59       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~91       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~123      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~155      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~187      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~219      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~251      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~283      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~315      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~347      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~379      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~411      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~443      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~475      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~58       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~90       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~122      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~154      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~186      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~218      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~250      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~282      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~314      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~346      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~378      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~410      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~442      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~474      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~57       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~89       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~121      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~153      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~185      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~217      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~249      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~281      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~313      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~345      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~377      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~409      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~441      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~473      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~56       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~88       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~120      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~152      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~184      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~216      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~248      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~280      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~312      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~344      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~376      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~408      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~440      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~472      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~55       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~87       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~119      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~151      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~183      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~215      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~247      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~279      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~311      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~343      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~375      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~407      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~439      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~471      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~54       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~86       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~118      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~150      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~182      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~214      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~246      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~278      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~310      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~342      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~374      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~406      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~438      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~470      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~53       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~85       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~117      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~149      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~181      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~213      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~245      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~277      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~309      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~341      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~373      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~405      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~437      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~469      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~52       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~84       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~116      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~148      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~180      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~212      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~244      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~276      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~308      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~340      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~372      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~404      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~436      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~468      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~51       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~83       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~115      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~147      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~179      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~211      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~243      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~275      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~307      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~339      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~371      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~403      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~435      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~467      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~50       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~82       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~114      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~146      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~178      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~210      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~242      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~274      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~306      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~338      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~370      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~402      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~434      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~466      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~49       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~81       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~113      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~145      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~177      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~209      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~241      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~273      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~305      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~337      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~369      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~401      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~433      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~465      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~48       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~80       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~112      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~144      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~176      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~208      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~240      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~272      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~304      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~336      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~368      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~400      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~432      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~464      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~47       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~79       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~111      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~143      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~175      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~207      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~239      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~271      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~303      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~335      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~367      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~399      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~431      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~463      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~46       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~78       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~110      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~142      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~174      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~206      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~238      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~270      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~302      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~334      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~366      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~398      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~430      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~462      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~45       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~77       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~109      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~141      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~173      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~205      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~237      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~269      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~301      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~333      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~365      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~397      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~429      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~461      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~44       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~76       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~108      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~140      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~172      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~204      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~236      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~268      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~300      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~332      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~364      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~396      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~428      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~460      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~43       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~75       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~107      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~139      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~171      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~203      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~235      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~267      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~299      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~331      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~363      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~395      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~427      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~459      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~42       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~74       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~106      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~138      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~170      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~202      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~234      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~266      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~298      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~330      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~362      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~394      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~426      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~458      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~41       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~73       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~105      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~137      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~169      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~201      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~233      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~265      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~297      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~329      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~361      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~393      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~425      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~457      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~40       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~72       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~104      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~136      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~168      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~200      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~232      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~264      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~296      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~328      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~360      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~392      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~424      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~456      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~39       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~71       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~103      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~135      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~167      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~199      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~231      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~263      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~295      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~327      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~359      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~391      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~423      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~455      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~38       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~70       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~102      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~134      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~166      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~198      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~230      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~262      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~294      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~326      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~358      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~390      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~422      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~454      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~37       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~69       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~101      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~133      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~165      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~197      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~229      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~261      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~293      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~325      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~357      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~389      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~421      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~453      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~36       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~68       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~100      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~132      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~164      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~196      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~228      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~260      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~292      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~324      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~356      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~388      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~420      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~452      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~35       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~67       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~99       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~131      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~163      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~195      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~227      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~259      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~291      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~323      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~355      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~387      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~419      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~451      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~34       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~66       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~98       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~130      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~162      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~194      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~226      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~258      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~290      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~322      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~354      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~386      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~418      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~450      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~33       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~65       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~97       ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~129      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~161      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~193      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~225      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~257      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~289      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~321      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~353      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~385      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~417      ; Stuck at GND due to stuck port data_in ;
+; register_file:Register_File|rf~449      ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 448 ;                                        ;
++-----------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 8256  ;
+; Number of registers using Synchronous Clear  ; 30    ;
+; Number of registers using Synchronous Load   ; 30    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 8226  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |datapath|pc_unit:PC_Unit|PC[0] ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |datapath|pc_unit:PC_Unit|PC[6] ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |datapath|alu:ALU|Mux32         ;
+; 8:1                ; 31 bits   ; 155 LEs       ; 124 LEs              ; 31 LEs                 ; No         ; |datapath|alu:ALU|Mux15         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: mux:MUX_RA1 ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; WIDTH          ; 4     ; Signed Integer                  ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: mux:MUX_RA2 ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; WIDTH          ; 4     ; Signed Integer                  ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: mux:MUX_ALU ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; WIDTH          ; 32    ; Signed Integer                  ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: mux:MUX_WriteBack ;
++----------------+-------+---------------------------------------+
+; Parameter Name ; Value ; Type                                  ;
++----------------+-------+---------------------------------------+
+; WIDTH          ; 32    ; Signed Integer                        ;
++----------------+-------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------+
+; Port Connectivity Checks: "mux:MUX_RA1" ;
++------+-------+----------+---------------+
+; Port ; Type  ; Severity ; Details       ;
++------+-------+----------+---------------+
+; In1  ; Input ; Info     ; Stuck at VCC  ;
++------+-------+----------+---------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "pc_unit:PC_Unit"                                                                       ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; PCPlus4 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 8256                        ;
+;     ENA               ; 8226                        ;
+;     SCLR SLD          ; 30                          ;
+; arriav_lcell_comb     ; 3312                        ;
+;     arith             ; 126                         ;
+;         0 data inputs ; 3                           ;
+;         1 data inputs ; 59                          ;
+;         4 data inputs ; 64                          ;
+;     extend            ; 3                           ;
+;         7 data inputs ; 3                           ;
+;     normal            ; 3183                        ;
+;         0 data inputs ; 1                           ;
+;         2 data inputs ; 37                          ;
+;         3 data inputs ; 34                          ;
+;         4 data inputs ; 258                         ;
+;         5 data inputs ; 1                           ;
+;         6 data inputs ; 2852                        ;
+; boundary_port         ; 148                         ;
+;                       ;                             ;
+; Max LUT depth         ; 8.70                        ;
+; Average LUT depth     ; 5.84                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:08     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+    Info: Processing started: Mon Nov 09 10:16:15 2026
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off datapath -c datapath
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file datapath/pc_unit.sv
+    Info (12023): Found entity 1: pc_unit File: D:/single_cycle_ARM_processor/datapath/pc_unit.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file datapath/instruction_memory.sv
+    Info (12023): Found entity 1: instruction_memory File: D:/single_cycle_ARM_processor/datapath/instruction_memory.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file datapath/register_file.sv
+    Info (12023): Found entity 1: register_file File: D:/single_cycle_ARM_processor/datapath/register_file.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file datapath/extend.sv
+    Info (12023): Found entity 1: extend File: D:/single_cycle_ARM_processor/datapath/extend.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file datapath/alu.sv
+    Info (12023): Found entity 1: alu File: D:/single_cycle_ARM_processor/datapath/alu.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file datapath/data_memory.sv
+    Info (12023): Found entity 1: data_memory File: D:/single_cycle_ARM_processor/datapath/data_memory.sv Line: 1
+Warning (12090): Entity "mux" obtained from "datapath/mux.sv" instead of from Quartus Prime megafunction library File: D:/single_cycle_ARM_processor/datapath/mux.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file datapath/mux.sv
+    Info (12023): Found entity 1: mux File: D:/single_cycle_ARM_processor/datapath/mux.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file datapath/shifter.sv
+    Info (12023): Found entity 1: shifter File: D:/single_cycle_ARM_processor/datapath/shifter.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file datapath/datapath.sv
+    Info (12023): Found entity 1: datapath File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 1
+Info (12127): Elaborating entity "datapath" for the top level hierarchy
+Info (12128): Elaborating entity "pc_unit" for hierarchy "pc_unit:PC_Unit" File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 97
+Info (12128): Elaborating entity "instruction_memory" for hierarchy "instruction_memory:Instruction_Memory" File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 112
+Warning (10858): Verilog HDL warning at instruction_memory.sv(9): object ROM used but never assigned File: D:/single_cycle_ARM_processor/datapath/instruction_memory.sv Line: 9
+Info (12128): Elaborating entity "mux" for hierarchy "mux:MUX_RA1" File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 131
+Info (12128): Elaborating entity "register_file" for hierarchy "register_file:Register_File" File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 179
+Info (12128): Elaborating entity "shifter" for hierarchy "shifter:Shifter" File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 209
+Info (12128): Elaborating entity "extend" for hierarchy "extend:Extend" File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 227
+Info (12128): Elaborating entity "mux" for hierarchy "mux:MUX_ALU" File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 246
+Info (12128): Elaborating entity "alu" for hierarchy "alu:ALU" File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 276
+Info (12128): Elaborating entity "data_memory" for hierarchy "data_memory:Data_Memory" File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 300
+Info (276014): Found 2 instances of uninferred RAM logic
+    Info (276007): RAM logic "data_memory:Data_Memory|RAM" is uninferred due to asynchronous read logic File: D:/single_cycle_ARM_processor/datapath/data_memory.sv Line: 34
+    Info (276007): RAM logic "register_file:Register_File|rf" is uninferred due to asynchronous read logic File: D:/single_cycle_ARM_processor/datapath/register_file.sv Line: 21
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "Instr[0]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[1]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[2]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[3]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[4]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[5]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[6]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[7]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[8]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[9]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[10]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[11]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[12]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[13]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[14]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[15]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[16]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[17]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[18]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[19]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[20]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[21]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[22]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[23]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[24]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[25]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[26]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[27]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[28]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[29]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[30]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+    Warning (13410): Pin "Instr[31]" is stuck at GND File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 33
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 3 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "RegSrc[1]" File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 13
+    Warning (15610): No output dependent on input pin "ImmSrc[0]" File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 15
+    Warning (15610): No output dependent on input pin "ImmSrc[1]" File: D:/single_cycle_ARM_processor/datapath/datapath.sv Line: 15
+Info (21057): Implemented 11683 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 16 input pins
+    Info (21059): Implemented 132 output pins
+    Info (21061): Implemented 11535 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 40 warnings
+    Info: Peak virtual memory: 4933 megabytes
+    Info: Processing ended: Mon Nov 09 10:16:35 2026
+    Info: Elapsed time: 00:00:20
+    Info: Total CPU time (on all processors): 00:00:30
+
+

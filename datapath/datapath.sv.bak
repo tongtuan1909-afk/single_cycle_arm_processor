@@ -1,0 +1,321 @@
+module datapath(
+
+    // =====================================
+    // CAC NGO VAO
+    // =====================================
+
+    // Xung clock va reset
+    input logic clk,
+    input logic reset,
+
+    // Cac tin hieu dieu khien tu Controller
+    input logic PCSrc,
+    input logic [1:0] RegSrc,
+    input logic RegWrite,
+    input logic [1:0] ImmSrc,
+    input logic ALUSrc,
+    input logic [2:0] ALUControl,
+    input logic MemWrite,
+    input logic MemtoReg,
+
+    // Cac co trang thai dau vao
+    input logic CarryIn,
+    input logic VFlagIn,
+
+    // =====================================
+    // CAC NGO RA
+    // =====================================
+
+    // Gia tri PC hien tai
+    output logic [31:0] PC,
+
+    // Lenh doc tu Instruction Memory
+    output logic [31:0] Instr,
+
+    // Ket qua cua ALU
+    output logic [31:0] ALUResult,
+
+    // Cac co trang thai {N,Z,C,V}
+    output logic [3:0] ALUFlags,
+
+    // Du lieu sau Write Back
+    output logic [31:0] Result
+
+);
+
+    // =====================================
+    // KHAI BAO CAC TIN HIEU NOI BO
+    // =====================================
+
+    // Cac gia tri PC
+    logic [31:0] PCPlus4;
+    logic [31:0] PCPlus8;
+
+    // Dia chi doc va ghi Register File
+    logic [3:0] A1;
+    logic [3:0] A2;
+    logic [3:0] A3;
+
+    // Du lieu doc tu Register File
+    logic [31:0] RD1;
+    logic [31:0] RD2;
+
+    // Du lieu sau Shifter
+    logic [31:0] ShifterResult;
+    logic ShifterCarry;
+
+    // Du lieu sau Extend
+    logic [31:0] ExtImm;
+
+    // Du lieu dau vao thu hai cua ALU
+    logic [31:0] SrcB;
+
+    // Du lieu doc tu Data Memory
+    logic [31:0] ReadData;
+
+
+    // =====================================
+    // 1. PC UNIT
+    // =====================================
+
+    pc_unit PC_Unit(
+
+        .clk(clk),
+        .reset(reset),
+
+        // Tin hieu chon PC tiep theo
+        .PCSrc(PCSrc),
+
+        // Du lieu quay lai PC
+        .Result(Result),
+
+        // Cac gia tri PC
+        .PC(PC),
+        .PCPlus4(PCPlus4),
+        .PCPlus8(PCPlus8)
+
+    );
+
+
+    // =====================================
+    // 2. INSTRUCTION MEMORY
+    // =====================================
+
+    instruction_memory Instruction_Memory(
+
+        // Dia chi doc lenh
+        .A(PC),
+
+        // Lenh doc duoc
+        .RD(Instr)
+
+    );
+
+
+    // =====================================
+    // 3. MUX CHON DIA CHI DOC RA1
+    // =====================================
+
+    // RegSrc[0] = 0: Chon Rn
+    // RegSrc[0] = 1: Chon R15
+
+    mux #(.WIDTH(4)) MUX_RA1(
+
+        .In0(Instr[19:16]),
+        .In1(4'd15),
+
+        .Sel(RegSrc[0]),
+
+        .Out(A1)
+
+    );
+
+
+    // =====================================
+    // 4. MUX CHON DIA CHI DOC RA2
+    // =====================================
+
+    // RegSrc[1] = 0: Chon Rm
+    // RegSrc[1] = 1: Chon Rd
+
+    mux #(.WIDTH(4)) MUX_RA2(
+
+        .In0(Instr[3:0]),
+        .In1(Instr[15:12]),
+
+        .Sel(RegSrc[1]),
+
+        .Out(A2)
+
+    );
+
+
+    // =====================================
+    // 5. REGISTER FILE
+    // =====================================
+
+    register_file Register_File(
+
+        .clk(clk),
+
+        // Tin hieu cho phep ghi
+        .WE3(RegWrite),
+
+        // Dia chi doc va ghi
+        .A1(A1),
+        .A2(A2),
+        .A3(A3),
+
+        // Du lieu ghi vao thanh ghi
+        .WD3(Result),
+
+        // Gia tri PC + 8
+        .PCPlus8(PCPlus8),
+
+        // Du lieu doc ra
+        .RD1(RD1),
+        .RD2(RD2)
+
+    );
+
+    // Dia chi thanh ghi dich
+    assign A3 = Instr[15:12];
+
+
+    // =====================================
+    // 6. SHIFTER
+    // =====================================
+
+    shifter Shifter(
+
+        // Du lieu can dich
+        .RD2(RD2),
+
+        // So bit can dich
+        .Shamt(Instr[11:7]),
+
+        // Ma phep dich
+        .Sh(Instr[6:5]),
+
+        // Carry dau vao
+        .CarryIn(CarryIn),
+
+        // Ket qua sau khi dich
+        .ShifterResult(ShifterResult),
+
+        // Carry sau khi dich
+        .ShifterCarry(ShifterCarry)
+
+    );
+
+
+    // =====================================
+    // 7. EXTEND
+    // =====================================
+
+    extend Extend(
+
+        // Lenh dau vao
+        .Instr(Instr),
+
+        // Tin hieu chon kieu mo rong
+        .ImmSrc(ImmSrc),
+
+        // Gia tri sau mo rong
+        .ExtImm(ExtImm)
+
+    );
+
+
+    // =====================================
+    // 8. MUX CHON DU LIEU DAU VAO ALU
+    // =====================================
+
+    // ALUSrc = 0: Chon ShifterResult
+    // ALUSrc = 1: Chon ExtImm
+
+    mux #(.WIDTH(32)) MUX_ALU(
+
+        .In0(ShifterResult),
+        .In1(ExtImm),
+
+        .Sel(ALUSrc),
+
+        .Out(SrcB)
+
+    );
+
+
+    // =====================================
+    // 9. ALU
+    // =====================================
+
+    alu ALU(
+
+        // Toan hang thu nhat
+        .SrcA(RD1),
+
+        // Toan hang thu hai
+        .SrcB(SrcB),
+
+        // Tin hieu dieu khien phep toan
+        .ALUControl(ALUControl),
+
+        // Carry tu Shifter
+        .ShifterCarry(ShifterCarry),
+
+        // Overflow dau vao
+        .VFlagIn(VFlagIn),
+
+        // Ket qua ALU
+        .ALUResult(ALUResult),
+
+        // Cac co trang thai
+        .ALUFlags(ALUFlags)
+
+    );
+
+
+    // =====================================
+    // 10. DATA MEMORY
+    // =====================================
+
+    data_memory Data_Memory(
+
+        // Xung clock
+        .CLK(clk),
+
+        // Tin hieu cho phep ghi
+        .WE(MemWrite),
+
+        // Dia chi truy cap bo nho
+        .A(ALUResult),
+
+        // Du lieu can ghi
+        .WD(RD2),
+
+        // Du lieu doc ra
+        .RD(ReadData)
+
+    );
+
+
+    // =====================================
+    // 11. MUX WRITE BACK
+    // =====================================
+
+    // MemtoReg = 0: Chon ALUResult
+    // MemtoReg = 1: Chon ReadData
+
+    mux #(.WIDTH(32)) MUX_WriteBack(
+
+        .In0(ALUResult),
+        .In1(ReadData),
+
+        .Sel(MemtoReg),
+
+        .Out(Result)
+
+    );
+
+endmodule

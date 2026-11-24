@@ -1,0 +1,77 @@
+module shifter(
+
+    // Du lieu dau vao lay tu Register File
+    input logic [31:0] RD2,
+
+    // So bit can dich
+    input logic [4:0] Shamt,
+
+    // Ma lua chon phep dich
+    input logic [1:0] Sh,
+
+    // Carry dau vao
+    input logic CarryIn,
+
+    // Ket qua sau khi dich
+    output logic [31:0] ShifterResult,
+
+    // Carry sau khi dich
+    output logic ShifterCarry
+
+);
+
+    // =====================================
+    // THUC HIEN CAC PHEP DICH
+    // =====================================
+
+    always_comb begin
+
+        // Gia tri mac dinh
+        ShifterResult = RD2;
+        ShifterCarry = CarryIn;
+
+        case (Sh)
+
+            // ---------------------------------
+            // 00: LSL - DICH TRAI LOGIC
+            // ---------------------------------
+            2'b00: begin
+
+                if (Shamt == 5'd0) begin
+                    ShifterResult = RD2;
+                    ShifterCarry = CarryIn;
+                end
+                else begin
+                    ShifterResult = RD2 << Shamt;
+                    ShifterCarry = RD2[32 - Shamt];
+                end
+
+            end
+
+            // ---------------------------------
+            // 01: LSR - DICH PHAI LOGIC
+            // ---------------------------------
+            2'b01: begin
+
+                if (Shamt == 5'd0) begin
+                    ShifterResult = 32'b0;
+                    ShifterCarry = RD2[31];
+                end
+                else begin
+                    ShifterResult = RD2 >> Shamt;
+                    ShifterCarry = RD2[Shamt - 1];
+                end
+
+            end
+
+            // Truong hop khong ho tro
+            default: begin
+                ShifterResult = RD2;
+                ShifterCarry = CarryIn;
+            end
+
+        endcase
+
+    end
+
+endmodule

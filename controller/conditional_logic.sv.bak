@@ -1,0 +1,244 @@
+
+module conditional_logic(
+
+    // =====================================
+    // CAC NGO VAO
+    // =====================================
+
+    // Xung clock va reset
+    input logic clk,
+    input logic reset,
+
+    // Ma dieu kien cua lenh ARM: Instr[31:28]
+    input logic [3:0] Cond,
+
+    // Cac co trang thai moi tu ALU
+    // ALUFlags = {N, Z, C, V}
+    input logic [3:0] ALUFlags,
+
+    // Tin hieu cho phep cap nhat cac co
+    input logic [1:0] FlagW,
+
+    // Cac tin hieu tu Decoder
+    input logic PCS,
+    input logic RegW,
+    input logic MemW,
+
+
+    // =====================================
+    // CAC NGO RA
+    // =====================================
+
+    // Tin hieu dieu khien PC
+    output logic PCSrc,
+
+    // Tin hieu ghi Register File
+    output logic RegWrite,
+
+    // Tin hieu ghi Data Memory
+    output logic MemWrite
+
+);
+
+
+    // =====================================
+    // CAC BIEN NOI BO
+    // =====================================
+
+    // Thanh ghi luu cac co trang thai NZCV
+    logic [3:0] Flags;
+
+    // Tin hieu xac dinh lenh co duoc thuc thi hay khong
+    logic CondEx;
+
+
+    // =====================================
+    // 1. KIEM TRA DIEU KIEN THUC THI LENH
+    // =====================================
+
+    always_comb begin
+
+        // Gia tri mac dinh
+        CondEx = 1'b0;
+
+        case (Cond)
+
+            // EQ: Equal
+            // Thuc thi khi Z = 1
+            4'b0000:
+                CondEx = Flags[2];
+
+
+            // NE: Not Equal
+            // Thuc thi khi Z = 0
+            4'b0001:
+                CondEx = ~Flags[2];
+
+
+            // CS: Carry Set
+            // Thuc thi khi C = 1
+            4'b0010:
+                CondEx = Flags[1];
+
+
+            // CC: Carry Clear
+            // Thuc thi khi C = 0
+            4'b0011:
+                CondEx = ~Flags[1];
+
+
+            // MI: Minus
+            // Thuc thi khi N = 1
+            4'b0100:
+                CondEx = Flags[3];
+
+
+            // PL: Plus
+            // Thuc thi khi N = 0
+            4'b0101:
+                CondEx = ~Flags[3];
+
+
+            // VS: Overflow Set
+            // Thuc thi khi V = 1
+            4'b0110:
+                CondEx = Flags[0];
+
+
+            // VC: Overflow Clear
+            // Thuc thi khi V = 0
+            4'b0111:
+                CondEx = ~Flags[0];
+
+
+            // HI: Higher
+            // Thuc thi khi C = 1 va Z = 0
+            4'b1000:
+                CondEx = Flags[1] & ~Flags[2];
+
+
+            // LS: Lower or Same
+            // Thuc thi khi C = 0 hoac Z = 1
+            4'b1001:
+                CondEx = ~Flags[1] | Flags[2];
+
+
+            // GE: Greater or Equal
+            // Thuc thi khi N = V
+            4'b1010:
+                CondEx = (Flags[3] == Flags[0]);
+
+
+            // LT: Less Than
+            // Thuc thi khi N khac V
+            4'b1011:
+                CondEx = (Flags[3] != Flags[0]);
+
+
+            // GT: Greater Than
+            // Thuc thi khi Z = 0 va N = V
+            4'b1100:
+                CondEx = ~Flags[2] &
+                         (Flags[3] == Flags[0]);
+
+
+            // LE: Less or Equal
+            // Thuc thi khi Z = 1 hoac N khac V
+            4'b1101:
+                CondEx = Flags[2] |
+                         (Flags[3] != Flags[0]);
+
+
+            // AL: Always
+            // Luon thuc thi
+            4'b1110:
+                CondEx = 1'b1;
+
+
+            // NV: Khong thuc thi trong mo hinh nay
+            4'b1111:
+                CondEx = 1'b0;
+
+
+            default:
+                CondEx = 1'b0;
+
+        endcase
+
+    end
+
+
+    // =====================================
+    // 2. CAP NHAT THANH GHI TRANG THAI NZCV
+    // =====================================
+
+    always_ff @(posedge clk or posedge reset) begin
+
+        if (reset) begin
+
+            // Khoi tao cac co trang thai bang 0
+            Flags <= 4'b0000;
+
+        end
+
+        else begin
+
+            // ---------------------------------
+            // Cap nhat N va Z
+            // ---------------------------------
+
+            // FlagW[1] = 1:
+            // Cho phep cap nhat Flags[3:2]
+            // Chi cap nhat neu lenh duoc thuc thi
+
+            if (FlagW[1] && CondEx) begin
+
+                Flags[3:2] <= ALUFlags[3:2];
+
+            end
+
+
+            // ---------------------------------
+            // Cap nhat C va V
+            // ---------------------------------
+
+            // FlagW[0] = 1:
+            // Cho phep cap nhat Flags[1:0]
+            // Chi cap nhat neu lenh duoc thuc thi
+
+            if (FlagW[0] && CondEx) begin
+
+                Flags[1:0] <= ALUFlags[1:0];
+
+            end
+
+        end
+
+    end
+
+
+    // =====================================
+    // 3. TAO CAC TIN HIEU DIEU KHIEN CUOI CUNG
+    // =====================================
+
+    // Neu lenh duoc thuc thi:
+    // PCSrc = PCS
+    // Neu lenh khong duoc thuc thi:
+    // PCSrc = 0
+
+    assign PCSrc = PCS & CondEx;
+
+
+    // Chi cho phep ghi Register File
+    // khi lenh thoa man dieu kien
+
+    assign RegWrite = RegW & CondEx;
+
+
+    // Chi cho phep ghi Data Memory
+    // khi lenh thoa man dieu kien
+
+    assign MemWrite = MemW & CondEx;
+
+
+endmodule

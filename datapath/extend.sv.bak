@@ -1,0 +1,70 @@
+module extend(
+    input  logic [31:0] Instr,
+    // Tin hieu dieu khien chon kieu mo rong
+    input  logic [1:0] ImmSrc,
+    // Gia tri Immediate sau khi mo rong
+    output logic [31:0] ExtImm
+);
+    // Bien trung gian luu gia tri Immediate
+    logic [31:0] ImmData;
+    // So bit xoay phai: 2 x Instr[11:8]
+    logic [4:0] RotateAmount;
+    // Tinh so bit xoay phai
+    assign RotateAmount = {Instr[11:8], 1'b0};
+
+    always_comb begin
+
+        // Gia tri mac dinh
+        ExtImm = 32'b0;
+
+        case (ImmSrc)
+		  
+            2'b00: begin
+				
+                // Lay 8 bit Immediate
+                ImmData = {24'b0, Instr[7:0]};
+
+                // Xoay phai theo so bit RotateAmount
+                ExtImm = (ImmData >> RotateAmount)
+                       | (ImmData << (32 - RotateAmount));
+
+                if (RotateAmount == 0) begin
+                    ExtImm = ImmData;
+                end
+
+            end
+
+           
+            2'b01: begin
+
+                // Mo rong 12 bit thanh 32 bit
+                // Chen them 20 bit 0 vao ben trai
+                ExtImm = {20'b0, Instr[11:0]};
+
+            end
+
+            
+            2'b10: begin
+
+                ExtImm = {{6{Instr[23]}}, Instr[23:0], 2'b00};
+
+            end
+
+            2'b11: begin
+
+                ExtImm = 32'b0;
+
+            end
+
+            // Truong hop mac dinh
+            default: begin
+
+                ExtImm = 32'b0;
+
+            end
+
+        endcase
+
+    end
+
+endmodule

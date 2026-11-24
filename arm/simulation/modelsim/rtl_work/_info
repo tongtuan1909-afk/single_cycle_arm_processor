@@ -1,0 +1,453 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/single_cycle_ARM_processor/arm/simulation/modelsim
+valu
+Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z2 !s110 1795343034
+!i10b 1
+!s100 K0^[H2`<i?@LQIOdUP]H10
+Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IEUgoZYfdbMJAB5FI<99XI0
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+w1794560479
+8D:/single_cycle_ARM_processor/datapath/alu.sv
+FD:/single_cycle_ARM_processor/datapath/alu.sv
+!i122 14
+L0 1 149
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z6 !s108 1795343033.000000
+!s107 D:/single_cycle_ARM_processor/datapath/alu.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/single_cycle_ARM_processor/datapath|D:/single_cycle_ARM_processor/datapath/alu.sv|
+!i113 1
+Z7 o-sv -work work
+Z8 !s92 -sv -work work +incdir+D:/single_cycle_ARM_processor/datapath
+Z9 tCvgOpt 0
+valu_decoder
+R1
+Z10 !s110 1795343032
+!i10b 1
+!s100 gGl;I1E^1UkDez[;@jmi>0
+R3
+IbFMGN[CShZUNdT`NlaL@53
+R4
+S1
+R0
+w1794017933
+8D:/single_cycle_ARM_processor/controller/alu_decoder.sv
+FD:/single_cycle_ARM_processor/controller/alu_decoder.sv
+!i122 5
+L0 1 148
+R5
+r1
+!s85 0
+31
+Z11 !s108 1795343032.000000
+!s107 D:/single_cycle_ARM_processor/controller/alu_decoder.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/single_cycle_ARM_processor/controller|D:/single_cycle_ARM_processor/controller/alu_decoder.sv|
+!i113 1
+R7
+Z12 !s92 -sv -work work +incdir+D:/single_cycle_ARM_processor/controller
+R9
+varm
+R1
+R2
+!i10b 1
+!s100 Dfmk6DH1E9FEU^IT>cc9c2
+R3
+IhNNBSiMXmNTKz5jNQlGB]2
+R4
+S1
+R0
+w1794560702
+8D:/single_cycle_ARM_processor/arm/arm.sv
+FD:/single_cycle_ARM_processor/arm/arm.sv
+!i122 15
+L0 1 102
+R5
+r1
+!s85 0
+31
+Z13 !s108 1795343034.000000
+!s107 D:/single_cycle_ARM_processor/arm/arm.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/single_cycle_ARM_processor/arm|D:/single_cycle_ARM_processor/arm/arm.sv|
+!i113 1
+R7
+Z14 !s92 -sv -work work +incdir+D:/single_cycle_ARM_processor/arm
+R9
+vconditional_logic
+R1
+R10
+!i10b 1
+!s100 EhC5KE?bM4RS[ebhlWBcC3
+R3
+I?01]gTGM]Olhk:]UkX8XN0
+R4
+S1
+R0
+w1794560529
+8D:/single_cycle_ARM_processor/controller/conditional_logic.sv
+FD:/single_cycle_ARM_processor/controller/conditional_logic.sv
+!i122 4
+L0 1 115
+R5
+r1
+!s85 0
+31
+R11
+!s107 D:/single_cycle_ARM_processor/controller/conditional_logic.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/single_cycle_ARM_processor/controller|D:/single_cycle_ARM_processor/controller/conditional_logic.sv|
+!i113 1
+R7
+R12
+R9
+vcontroller
+R1
+R10
+!i10b 1
+!s100 looFZ_]fCFHY92CN2>IJY2
+R3
+Idzz[XhzC>K0]?1b0gH^O;3
+R4
+S1
+R0
+w1794560649
+8D:/single_cycle_ARM_processor/controller/controller.sv
+FD:/single_cycle_ARM_processor/controller/controller.sv
+!i122 3
+L0 1 112
+R5
+r1
+!s85 0
+31
+R11
+!s107 D:/single_cycle_ARM_processor/controller/controller.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/single_cycle_ARM_processor/controller|D:/single_cycle_ARM_processor/controller/controller.sv|
+!i113 1
+R7
+R12
+R9
+vdata_memory
+R1
+Z15 !s110 1795343033
+!i10b 1
+!s100 YC@h_T]QViHFRc;8XPC;21
+R3
+IV3K?EXEIBH=o^1;RG]:P11
+R4
+S1
+R0
+w1793698874
+8D:/single_cycle_ARM_processor/datapath/data_memory.sv
+FD:/single_cycle_ARM_processor/datapath/data_memory.sv
+!i122 13
+L0 1 65
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/single_cycle_ARM_processor/datapath/data_memory.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/single_cycle_ARM_processor/datapath|D:/single_cycle_ARM_processor/datapath/data_memory.sv|
+!i113 1
+R7
+R8
+R9
+vdatapath
+R1
+R15
+!i10b 1
+!s100 :kk9A4FjAnLcS?DL?jcAC0
+R3
+IVcc=^8_<4@fIn]URLXfn_1
+R4
+S1
+R0
+w1794560685
+8D:/single_cycle_ARM_processor/datapath/datapath.sv
+FD:/single_cycle_ARM_processor/datapath/datapath.sv
+!i122 12
+L0 1 248
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/single_cycle_ARM_processor/datapath/datapath.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/single_cycle_ARM_processor/datapath|D:/single_cycle_ARM_processor/datapath/datapath.sv|
+!i113 1
+R7
+R8
+R9
+vdecoder
+R1
+R10
+!i10b 1
+!s100 O^[9OC_J81S::F5WCoo]o3
+R3
+I^4^hlB54:=GiBVc[5hz1I1
+R4
+S1
+R0
+w1794127052
+8D:/single_cycle_ARM_processor/controller/decoder.sv
+FD:/single_cycle_ARM_processor/controller/decoder.sv
+!i122 2
+L0 2 128
+R5
+r1
+!s85 0
+31
+R11
+!s107 D:/single_cycle_ARM_processor/controller/decoder.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/single_cycle_ARM_processor/controller|D:/single_cycle_ARM_processor/controller/decoder.sv|
+!i113 1
+R7
+R12
+R9
+vextend
+R1
+R15
+!i10b 1
+!s100 Z1CSnKaOG<cdD2K_36?J;1
+R3
+I@AA61IgZ8L<1`SX:hFLDI1
+R4
+S1
+R0
+w1793716373
+8D:/single_cycle_ARM_processor/datapath/extend.sv
+FD:/single_cycle_ARM_processor/datapath/extend.sv
+!i122 11
+Z16 L0 1 71
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/single_cycle_ARM_processor/datapath/extend.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/single_cycle_ARM_processor/datapath|D:/single_cycle_ARM_processor/datapath/extend.sv|
+!i113 1
+R7
+R8
+R9
+vinstruction_memory
+R1
+R15
+!i10b 1
+!s100 HV79Ba@8eR[6e[GVm[6W:1
+R3
+IebiBaSC2[zgYR:Y>B7@@<3
+R4
+S1
+R0
+w1793630616
+8D:/single_cycle_ARM_processor/datapath/instruction_memory.sv
+FD:/single_cycle_ARM_processor/datapath/instruction_memory.sv
+!i122 10
+L0 1 21
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/single_cycle_ARM_processor/datapath/instruction_memory.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/single_cycle_ARM_processor/datapath|D:/single_cycle_ARM_processor/datapath/instruction_memory.sv|
+!i113 1
+R7
+R8
+R9
+vmain_decoder
+R1
+R10
+!i10b 1
+!s100 G=zf@B2F19YG`Dbd?lI@d0
+R3
+IGSK[DCD`QH4dL6<0<H=^i1
+R4
+S1
+R0
+w1793925644
+8D:/single_cycle_ARM_processor/controller/main_decoder.sv
+FD:/single_cycle_ARM_processor/controller/main_decoder.sv
+!i122 1
+L0 1 159
+R5
+r1
+!s85 0
+31
+R11
+!s107 D:/single_cycle_ARM_processor/controller/main_decoder.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/single_cycle_ARM_processor/controller|D:/single_cycle_ARM_processor/controller/main_decoder.sv|
+!i113 1
+R7
+R12
+R9
+vmux
+R1
+R15
+!i10b 1
+!s100 [X7dJVi1XQXhadga8c5KR3
+R3
+IDUBeI6>fEa>]bha;]H91c3
+R4
+S1
+R0
+w1793699835
+8D:/single_cycle_ARM_processor/datapath/mux.sv
+FD:/single_cycle_ARM_processor/datapath/mux.sv
+!i122 9
+Z17 L0 1 30
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/single_cycle_ARM_processor/datapath/mux.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/single_cycle_ARM_processor/datapath|D:/single_cycle_ARM_processor/datapath/mux.sv|
+!i113 1
+R7
+R8
+R9
+vpc_logic
+R1
+R10
+!i10b 1
+!s100 AzjCP@cUV?M2d^4ek^@;Q1
+R3
+IQ7G:d=ONXXJ[nSo>demj03
+R4
+S1
+R0
+w1794127033
+8D:/single_cycle_ARM_processor/controller/pc_logic.sv
+FD:/single_cycle_ARM_processor/controller/pc_logic.sv
+!i122 0
+L0 2 31
+R5
+r1
+!s85 0
+31
+R11
+!s107 D:/single_cycle_ARM_processor/controller/pc_logic.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/single_cycle_ARM_processor/controller|D:/single_cycle_ARM_processor/controller/pc_logic.sv|
+!i113 1
+R7
+R12
+R9
+vpc_unit
+R1
+R15
+!i10b 1
+!s100 F]9m0IYC7S^kEDoj:@<4i0
+R3
+I1R6UkcPb2U::=Vf8;Dg;62
+R4
+S1
+R0
+w1793628946
+8D:/single_cycle_ARM_processor/datapath/pc_unit.sv
+FD:/single_cycle_ARM_processor/datapath/pc_unit.sv
+!i122 8
+R17
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/single_cycle_ARM_processor/datapath/pc_unit.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/single_cycle_ARM_processor/datapath|D:/single_cycle_ARM_processor/datapath/pc_unit.sv|
+!i113 1
+R7
+R8
+R9
+vregister_file
+R1
+R15
+!i10b 1
+!s100 n]B5fVHh4<3AUmGCS_jiL3
+R3
+IA0]2_SQ>Zo^abU`WY3Uk@3
+R4
+S1
+R0
+w1793631015
+8D:/single_cycle_ARM_processor/datapath/register_file.sv
+FD:/single_cycle_ARM_processor/datapath/register_file.sv
+!i122 7
+R16
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/single_cycle_ARM_processor/datapath/register_file.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/single_cycle_ARM_processor/datapath|D:/single_cycle_ARM_processor/datapath/register_file.sv|
+!i113 1
+R7
+R8
+R9
+vshifter
+R1
+R15
+!i10b 1
+!s100 K:DFj;C2UD0EW_QiRO65d1
+R3
+IJLU<T`i8^OV8?egzgOF[f1
+R4
+S1
+R0
+w1794544123
+8D:/single_cycle_ARM_processor/datapath/shifter.sv
+FD:/single_cycle_ARM_processor/datapath/shifter.sv
+!i122 6
+L0 1 58
+R5
+r1
+!s85 0
+31
+R11
+!s107 D:/single_cycle_ARM_processor/datapath/shifter.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/single_cycle_ARM_processor/datapath|D:/single_cycle_ARM_processor/datapath/shifter.sv|
+!i113 1
+R7
+R8
+R9
+vtb_arm
+R1
+R2
+!i10b 1
+!s100 HRP_NZ8A9IhDBnZh^XfLF2
+R3
+I]XNGWYkeHdSJX24CnMU^:2
+R4
+S1
+R0
+w1794562991
+8D:/single_cycle_ARM_processor/arm/tb_arm.sv
+FD:/single_cycle_ARM_processor/arm/tb_arm.sv
+!i122 16
+L0 5 378
+R5
+r1
+!s85 0
+31
+R13
+!s107 D:/single_cycle_ARM_processor/arm/tb_arm.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/single_cycle_ARM_processor/arm|D:/single_cycle_ARM_processor/arm/tb_arm.sv|
+!i113 1
+R7
+R14
+R9

@@ -1,0 +1,167 @@
+module alu(
+
+    // Toan hang thu nhat
+    input logic [31:0] SrcA,
+
+    // Toan hang thu hai
+    input logic [31:0] SrcB,
+
+    // Tin hieu dieu khien phep toan
+    input logic [2:0] ALUControl,
+
+    // Carry tu khối Shifter
+    input logic ShifterCarry,
+
+    // Co tran trước đó
+    input logic VFlagIn,
+
+    // Ket qua ALU
+    output logic [31:0] ALUResult,
+
+    // Cac co trang thai {N,Z,C,V}
+    output logic [3:0] ALUFlags
+
+);
+
+    // =====================================
+    // CAC BIEN TRUNG GIAN
+    // =====================================
+
+    // Cac co trang thai
+    logic N, Z, C, V;
+
+    // Bien tam 33 bit
+    logic [32:0] sum;
+    logic [32:0] sub;
+
+    // =====================================
+    // PHAN 1: THUC HIEN PHEP TOAN
+    // =====================================
+
+    always_comb begin
+
+        // Tinh tong va hieu tam thoi
+        sum = {1'b0, SrcA} + {1'b0, SrcB};
+
+        // Phep tru bang bu 2
+        sub = {1'b0, SrcA}
+            + {1'b0, ~SrcB}
+            + 33'd1;
+
+        // Gia tri mac dinh
+        ALUResult = 32'b0;
+
+        // Mac dinh cac co
+        C = ShifterCarry;
+        V = VFlagIn;
+
+        // Lua chon phep toan
+        case(ALUControl)
+
+            // ---------------------------------
+            // 000: AND
+            // ---------------------------------
+            3'b000: begin
+                ALUResult = SrcA & SrcB;
+            end
+
+            // ---------------------------------
+            // 001: ORR
+            // ---------------------------------
+            3'b001: begin
+                ALUResult = SrcA | SrcB;
+            end
+
+            // ---------------------------------
+            // 010: ADD
+            // ---------------------------------
+            3'b010: begin
+
+                ALUResult = sum[31:0];
+
+                // Co Carry
+                C = sum[32];
+
+                // Co Overflow
+                V = (~(SrcA[31] ^ SrcB[31]))
+                  & (SrcA[31] ^ ALUResult[31]);
+
+            end
+
+            // ---------------------------------
+            // 011: SUB
+            // ---------------------------------
+            3'b011: begin
+
+                ALUResult = sub[31:0];
+
+                // C = 1 neu khong co muon
+                C = sub[32];
+
+                // Co Overflow
+                V = (SrcA[31] ^ SrcB[31])
+                  & (SrcA[31] ^ ALUResult[31]);
+
+            end
+
+            // ---------------------------------
+            // 100: XOR
+            // ---------------------------------
+            3'b100: begin
+                ALUResult = SrcA ^ SrcB;
+            end
+
+            // ---------------------------------
+            // 101: BIC
+            // ---------------------------------
+            3'b101: begin
+                ALUResult = SrcA & (~SrcB);
+            end
+
+            // ---------------------------------
+            // 110: MOV
+            // ---------------------------------
+            3'b110: begin
+                ALUResult = SrcB;
+            end
+
+            // ---------------------------------
+            // 111: CMP
+            // ---------------------------------
+            3'b111: begin
+
+                // CMP thuc hien phep tru SrcA - SrcB
+                ALUResult = sub[31:0];
+
+                // Cap nhat co Carry
+                C = sub[32];
+
+                // Cap nhat co Overflow
+                V = (SrcA[31] ^ SrcB[31])
+                  & (SrcA[31] ^ ALUResult[31]);
+
+            end
+
+            // Truong hop mac dinh
+            default: begin
+                ALUResult = 32'b0;
+            end
+
+        endcase
+
+        // =====================================
+        // PHAN 2: TINH CAC CO TRANG THAI
+        // =====================================
+
+        // N = 1 neu bit dau ket qua bang 1
+        N = ALUResult[31];
+
+        // Z = 1 neu ket qua bang 0
+        Z = (ALUResult == 32'b0) ? 1'b1 : 1'b0;
+
+        // Ghep cac co trang thai
+        ALUFlags = {N, Z, C, V};
+
+    end
+
+endmodule
